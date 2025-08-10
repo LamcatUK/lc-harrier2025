@@ -1,0 +1,55 @@
+.footer {
+    background-color: var(--col-neutral-900);
+    color: white;
+
+    font-size: var(--text-sm);
+
+    .footer-title {
+        font-family: var(--ff-heading);
+        font-weight: var(--fw-900);
+        font-size: var(--text-base);
+        margin-bottom: 0.5rem;
+    }
+
+    &__menu {
+        list-style: none;
+        padding-inline-start: 0;
+        line-height: 2;
+        a {
+            text-decoration: none;
+            color: white;
+            transition: color var(--transition);
+            &:hover {
+                color: var(--col-accent-500);
+            }
+        }
+    }
+
+    
+    &__contact,
+    .social-icons {
+        line-height: 2;
+        a {
+            color: var(--col-accent-500);
+            text-decoration: none;
+            font-weight: var(--fw-600);
+            transition: color var(--transition);
+            &:hover {
+                color: var(--col-neutral-50);
+            }
+        }
+    }
+    .colophon {
+        font-size: var(--fs-100);
+    }
+
+    .cb {
+        content: url(../img/cb-mono.png);
+        transition: opacity var(--transition);
+        opacity: 0.2;
+        &:hover {
+            opacity: 0.8;
+        }
+    }
+
+}

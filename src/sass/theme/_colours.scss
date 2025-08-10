@@ -1,0 +1,49 @@
+/* Colour Classes */
+.has-neutral-50-background-color,
+.bg--neutral-50 {
+    background-color: var(--col-neutral-50);
+}
+.has-neutral-50-color,
+.text-neutral-50 {
+    color: var(--col-neutral-50);
+}
+
+.has-neutral-900-background-color,
+.bg--neutral-900 {
+    background-color: var(--col-neutral-900);
+}
+.has-neutral-900-color,
+.text-neutral-900 {
+    color: var(--col-neutral-900);
+}
+
+.has-secondary-100-background-color,
+.bg--secondary-100 {
+    background-color: var(--col-secondary-100);
+}
+.has-secondary-100-color,
+.text-secondary-100 {
+    color: var(--col-secondary-100);
+}
+
+.has-secondary-300-background-color,
+.bg--secondary-300 {
+    background-color: var(--col-secondary-300);
+}
+.has-secondary-300-color,
+.text-secondary-300 {
+    color: var(--col-secondary-300);
+}
+
+.has-accent-500-background-color,
+.bg--accent-500 {
+    background-color: var(--col-accent-500);
+}
+.has-accent-500-color,
+.text-accent-500 {
+    color: var(--col-accent-500);
+}
+
+.text-green {
+    color: #00a99d;
+}

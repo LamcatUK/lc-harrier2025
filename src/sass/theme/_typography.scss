@@ -1,0 +1,136 @@
+/* urbanist-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Urbanist';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/urbanist-v17-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+/* nunito-sans-200 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 200;
+  src: url('../fonts/nunito-sans-v18-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* nunito-sans-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: 'Nunito Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: url('../fonts/nunito-sans-v18-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+
+:root {
+    font-variant-ligatures: none;
+}
+
+html {
+    font-size: 16px;
+}
+
+body {
+    font-family: var(--ff-body);
+    font-weight: var(--fw-400);
+    font-size: var(--text-base);
+    line-height: 1.556;
+    font-style: normal;
+    color: var(--col-dark);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+.h1,
+h2,
+.h2,
+h3,
+.h3 {
+    font-family: var(--ff-heading);
+    font-weight: var(--fw-900);
+    line-height: 1.1;
+    text-wrap: balance;
+    margin-bottom: 0.5em;
+}
+
+h1,
+.h1 {
+    font-size: var(--text-2xl);
+    text-transform: uppercase;
+}
+h2,
+.h2 {
+    font-size: var(--text-xl);
+}
+h3,
+.h3 {
+    font-size: var(--text-lg);
+}
+h4,
+.h4,
+h5,
+.h5 {
+    font-size: var(--text-base);
+    font-size: var(--fs-550);
+}
+
+.fw-400 {
+    font-weight: var(--fw-400);
+}
+strong,
+.fw-bold,
+.fw-500 {
+    font-weight: var(--fw-500);
+}
+.fs-500,
+.has-medium-font-size {
+    font-size: var(--text-lg);
+}
+.fs-300,
+.has-small-font-size {
+    font-size: var(--text-sm);
+}
+
+.text-balance {
+    text-wrap: balance;
+}
+
+.w-constrained--sm {
+    max-width: 65ch;
+}
+.w-constrained--lg {
+    max-width: 92ch;
+}
+
+// p:not([class]) {
+//     max-width: 70ch;
+// }
+
+.ff-body {
+    font-family: var(--ff-body);
+}
+
+.lead-in {
+    font-size: var(--fs-500);
+    font-weight: var(--fw-500);
+    line-height: 1.4;
+}
+
+.fancy {
+    position: relative;
+    padding-left: 4.5rem;
+    &::before {
+        content: '';
+        position: absolute;
+        left: 0;
+        bottom: 0.25em;
+        width: 3.75rem;
+        height: 1.25rem;
+        background-color: var(--col-accent-500);
+        display: block;
+    }
+}

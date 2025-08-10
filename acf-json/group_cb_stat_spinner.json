@@ -1,0 +1,157 @@
+{
+    "key": "group_cb_stat_spinner",
+    "title": "CB Stat Spinner",
+    "fields": [
+        {
+            "key": "field_cb_stat_spinner_title",
+            "label": "CB Stat Spinner",
+            "name": "",
+            "aria-label": "",
+            "type": "message",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": false,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "message": "",
+            "esc_html": 0,
+            "new_lines": "wpautop"
+        },
+        {
+            "key": "field_688a0def2c121",
+            "label": "Stat Spinner",
+            "name": "stat_spinner",
+            "aria-label": "",
+            "type": "repeater",
+            "instructions": "",
+            "required": 0,
+            "conditional_logic": 0,
+            "wrapper": {
+                "width": "",
+                "class": "",
+                "id": ""
+            },
+            "layout": "block",
+            "pagination": 0,
+            "min": 0,
+            "max": 0,
+            "collapsed": "",
+            "button_label": "Add Row",
+            "rows_per_page": 20,
+            "sub_fields": [
+                {
+                    "key": "field_688a0e022c122",
+                    "label": "Prefix",
+                    "name": "prefix",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_688a0def2c121"
+                },
+                {
+                    "key": "field_688a0e162c123",
+                    "label": "Stat",
+                    "name": "stat",
+                    "aria-label": "",
+                    "type": "number",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "min": "",
+                    "max": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "step": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_688a0def2c121"
+                },
+                {
+                    "key": "field_688a0e362c124",
+                    "label": "Suffix",
+                    "name": "suffix",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "33",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_688a0def2c121"
+                },
+                {
+                    "key": "field_688a0e442c125",
+                    "label": "Label",
+                    "name": "label",
+                    "aria-label": "",
+                    "type": "text",
+                    "instructions": "",
+                    "required": 0,
+                    "conditional_logic": 0,
+                    "wrapper": {
+                        "width": "",
+                        "class": "",
+                        "id": ""
+                    },
+                    "default_value": "",
+                    "maxlength": "",
+                    "allow_in_bindings": 0,
+                    "placeholder": "",
+                    "prepend": "",
+                    "append": "",
+                    "parent_repeater": "field_688a0def2c121"
+                }
+            ]
+        }
+    ],
+    "location": [
+        [
+            {
+                "param": "block",
+                "operator": "==",
+                "value": "acf\/cb-stat-spinner"
+            }
+        ]
+    ],
+    "menu_order": 0,
+    "position": "normal",
+    "style": "default",
+    "label_placement": "top",
+    "instruction_placement": "label",
+    "hide_on_screen": "",
+    "active": true,
+    "description": "",
+    "show_in_rest": 0,
+    "modified": 1753878093
+}
