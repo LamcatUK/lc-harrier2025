@@ -3,10 +3,19 @@
 @import "buttons";
 @import "header";
 @import "footer";
+@import "gallery";
 @import "blocks/blocks";
 
 body {
   background-color: var(--col-neutral-50);
+}
+
+.sos {
+  background-color: var(--col-accent-400);
+  a {
+    color: var(--col-neutral-900);
+    text-decoration: none;
+  }
 }
 
 @media (min-width: 992px) {
@@ -49,28 +58,6 @@ body {
   padding-inline: 0;
 }
 
-@keyframes scale-up-bottom {
-  0% {
-    transform: scaleY(0.5);
-    opacity: 0;
-  }
-  100% {
-    transform: scaleY(1);
-    opacity: 1;
-  }
-}
-
-[data-aos="scale-up-bottom"] {
-  opacity: 0;
-  transition-property: transform, opacity;
-  transform: scale(0.85);
-}
-
-[data-aos="scale-up-bottom"].aos-animate {
-  opacity: 1;
-  transform: scale(1);
-}
-
 .post_meta {
   padding-inline: 1rem;
   padding-block-end: 0.5rem;
@@ -81,8 +68,9 @@ body {
   color: var(--col-accent-500);
 }
 
-// main {
-// }
+main {
+  margin-top: var(--h-top);
+}
 
 .blog {
   margin-top: var(--h-top);
@@ -117,6 +105,10 @@ body {
       }
     }
   }
+}
+
+.ratio-9x16 {
+  --bs-aspect-ratio: calc(16 / 9 * 100%); /* = 177.77% */
 }
 
 // show stuff that overflows horizontally

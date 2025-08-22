@@ -1,5 +1,7 @@
 //Add your own editor styles here or import additional files
 
+// Import design tokens for editor CSS variables and type tokens
+@import 'theme/tokens';
 // Grab our child theme variables
 @import 'theme/child_theme_variables';
 

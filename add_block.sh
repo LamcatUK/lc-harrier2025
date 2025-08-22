@@ -17,7 +17,7 @@ block_kebab=$(echo "$block_name" | tr '[:upper:]' '[:lower:]' | tr ' ' '-')
 php_file="./page-templates/blocks/${block_kebab}.php"
 scss_file="./src/sass/theme/blocks/_${block_slug}.scss"
 blocks_scss="./src/sass/theme/blocks/_blocks.scss"
-blocks_php="./inc/cb-blocks.php"
+blocks_php="./inc/lc-blocks.php"
 acf_json_file="./acf-json/group_${block_slug}.json"
 
 # Exit if block already exists, with specific feedback

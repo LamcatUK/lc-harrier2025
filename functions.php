@@ -8,9 +8,9 @@
 // Exit if accessed directly.
 defined( 'ABSPATH' ) || exit;
 
-define( 'CB_THEME_DIR', WP_CONTENT_DIR . '/themes/cb-statman2025' );
+define( 'LC_THEME_DIR', WP_CONTENT_DIR . '/themes/lc-harrier2025' );
 
-require_once CB_THEME_DIR . '/inc/cb-theme.php';
+require_once LC_THEME_DIR . '/inc/lc-theme.php';
 
 /**
  * Removes the parent themes stylesheet and scripts from inc/enqueue.php
@@ -28,34 +28,42 @@ add_action( 'wp_enqueue_scripts', 'understrap_remove_scripts', 20 );
 /**
  * Enqueue our stylesheet and javascript file
  */
-function theme_enqueue_styles() {
 
-	// Get the theme data.
-	$the_theme     = wp_get_theme();
-	$theme_version = $the_theme->get( 'Version' );
-
-	$suffix = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
-	// Grab asset urls.
-	$theme_styles  = "/css/child-theme{$suffix}.css";
-	$theme_scripts = "/js/child-theme{$suffix}.js";
-
-	$css_version = $theme_version . '.' . filemtime( get_stylesheet_directory() . $theme_styles );
-
-	wp_enqueue_style( 'child-understrap-styles', get_stylesheet_directory_uri() . $theme_styles, array(), $css_version );
-	// wp_enqueue_script('jquery');.
-
-	$js_version = $theme_version . '.' . filemtime( get_stylesheet_directory() . $theme_scripts );
-
-	wp_enqueue_script( 'child-understrap-scripts', get_stylesheet_directory_uri() . $theme_scripts, array(), $js_version, true );
+// Enqueue child-theme.min.css late for override, with filemtime versioning.
+function lc_enqueue_theme_css() {
+	$rel = '/css/child-theme.min.css';
+	$abs = get_stylesheet_directory() . $rel;
+	wp_enqueue_style(
+		'lc-theme',
+		get_stylesheet_directory_uri() . $rel,
+		[],
+		file_exists( $abs ) ? filemtime( $abs ) : null
+	);
 }
-add_action( 'wp_enqueue_scripts', 'theme_enqueue_styles' );
+add_action( 'wp_enqueue_scripts', 'lc_enqueue_theme_css', 20 );
+
+// Enqueue child-theme.min.js with filemtime versioning.
+function lc_enqueue_theme_js() {
+    $rel = '/js/child-theme.min.js';
+    $abs = get_stylesheet_directory() . $rel;
+    if ( file_exists( $abs ) ) {
+        wp_enqueue_script(
+            'lc-theme-js',
+            get_stylesheet_directory_uri() . $rel,
+            [],
+            filemtime( $abs ),
+            true
+        );
+    }
+}
+add_action( 'wp_enqueue_scripts', 'lc_enqueue_theme_js', 20 );
 
 
 /**
  * Load the child theme's text domain
  */
 function add_child_theme_textdomain() {
-	load_child_theme_textdomain( 'cb-statman2025', get_stylesheet_directory() . '/languages' );
+	load_child_theme_textdomain( 'lc-harrier2025', get_stylesheet_directory() . '/languages' );
 }
 add_action( 'after_setup_theme', 'add_child_theme_textdomain' );
 

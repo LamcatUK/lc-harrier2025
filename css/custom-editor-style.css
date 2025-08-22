@@ -1,39 +1,148 @@
 @charset "UTF-8";
 :root {
-  /* === Colours === */
-  --hsl-neutral-50: 0 0% 100%;
-  --col-neutral-50: hsl(var(--hsl-neutral-50));
-  --hsl-neutral-900: 0 0% 12%;
-  --col-neutral-900: hsl(var(--hsl-neutral-900));
-  --hsl-secondary-100: 40 20% 97%;
-  --col-secondary-100: hsl(var(--hsl-secondary-100));
-  --hsl-secondary-300: 0 0% 85%;
-  --col-secondary-300: hsl(var(--hsl-secondary-300));
-  --hsl-accent-500: 224 100% 74%;
-  --col-accent-500: hsl(var(--hsl-accent-500));
-  /* === Font Sizes === */
-  /* fluid type scale */
-  --text-xs: clamp(0.6875rem, 0.64rem + 0.15vw, 0.75rem); /* ~11–12px */
-  --text-sm: clamp(0.8125rem, 0.77rem + 0.2vw, 0.875rem); /* ~13–14px */
-  --text-base: clamp(1rem, 0.95rem + 0.25vw, 1rem); /* ~16px */
-  --text-lg: clamp(1.25rem, 1.15rem + 0.4vw, 1.5rem); /* ~20–24px */
-  --text-xl: clamp(1.75rem, 1.55rem + 0.6vw, 2.2rem); /* ~28–35px */
-  --text-2xl: clamp(2.25rem, 2rem + 0.8vw, 2.5rem); /* ~36–40px */
-  --text-3xl: clamp(2.5rem, 2.25rem + 1vw, 3rem); /* ~36–40px */
-  /* === Font Families === */
-  --ff-body: "Nunito Sans", Tahoma, Geneva, Verdana, sans-serif;
-  --ff-heading: "Urbanist", Tahoma, Geneva, Verdana, sans-serif;
-  /* === Font Weights === */
-  --fw-400: 200; /* Regular */
-  --fw-500: 600; /* SemiBold */
-  --fw-900: 600; /* SemiBold */
+  /* =========================
+     COLOURS (HSL + computed)
+     ========================= */
+  --col-white-hsl: 0 0% 100%; /* #FFFFFF – pure white */
+  --col-white: hsl(var(--col-white-hsl));
+  --col-black-hsl: 0 0% 0%; /* #000000 – pure black */
+  --col-neutral-900-hsl: 90 9% 16%; /* #2B2624 – charcoal */
+  --col-neutral-900: hsl(var(--col-neutral-900-hsl));
+  --col-black: hsl(var(--col-black-hsl));
+  --col-secondary-100-hsl: 30 27% 95%; /* #F5F2EE – off-white */
+  --col-secondary-100: hsl(var(--col-secondary-100-hsl));
+  --col-secondary-400-hsl: 32 14% 73%; /* #C2B8AC – soft taupe */
+  --col-secondary-400: hsl(var(--col-secondary-400-hsl));
+  --col-secondary-900-hsl: 24 7% 40%; /* #6E655F – warm stone */
+  --col-secondary-900: hsl(var(--col-secondary-900-hsl));
+  --col-accent-400-hsl: 39 62% 54%; /* #D79C3F – golden ochre */
+  --col-accent-400: hsl(var(--col-accent-400-hsl));
+  /* Accent variants */
+  --col-accent-400-hover-hsl: 39 62% 47%; /* darker by ~7% lightness */
+  --col-accent-400-hover: hsl(var(--col-accent-400-hover-hsl));
+  --col-accent-400-active-hsl: 39 62% 42%; /* darker by ~12% lightness */
+  --col-accent-400-active: hsl(var(--col-accent-400-active-hsl));
+  /* =========================
+     TYPOGRAPHY (families/weights)
+     ========================= */
+  --ff-heading:
+    "Barlow", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --ff-body:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --ff-accent:
+    "Merriweather", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --fw-heading: 600; /* Semibold */
+  --fw-body: 400; /* Regular */
+  --fw-meta: 200; /* Thin */
+  --fw-ui: 600; /* Semibold */
+  --fw-accent: 300; /* Light Italic */
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  /* =========================
+     TYPOGRAPHY (responsive sizes)
+     ========================= */
+  --fs-display: clamp(2.25rem, 1.2rem + 2.5vw, 3rem); /* 36→48px */
+  --fs-h2: clamp(1.75rem, 1.1rem + 1.5vw, 2.25rem); /* 28→36px */
+  --fs-h3: clamp(1.25rem, 1.05rem + 0.8vw, 1.5rem); /* 20→24px */
+  --fs-subtle: clamp(1.125rem, 1.02rem + 0.5vw, 1.375rem); /* 18→22px */
+  --fs-body: clamp(1rem, 0.95rem + 0.4vw, 1.125rem); /* 16→18px */
+  --fs-meta: clamp(1rem, 0.98rem + 0.2vw, 1.0625rem); /* 16→17px */
+  --fs-ui: clamp(0.875rem, 0.82rem + 0.3vw, 0.9375rem); /* 14→15px */
+  /* =========================
+     RADIUS
+     ========================= */
+  --radius-base: 8px; /* Spec default for interactive & container elements */
+  /* =========================
+     SHADOWS
+     ========================= */
+  /* Close & tight – "active" */
+  --shadow-active: 0 1px 2px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.12);
+  /* Mid & airy – "non-interactive" */
+  --shadow-noninteractive:
+    0 4px 6px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+  /* Out & clear – "interactive" */
+  --shadow-interactive:
+    0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
   /* === Utilities === */
   --transition: 250ms ease-out;
   --h-top: 72px;
   --h-top-desktop: 130px;
-  /* === Shadows === */
-  --shadow-in: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
-  --shadow-out: rgba(0, 0, 0, 0.1) 0px 20px 25px -5px, rgba(0, 0, 0, 0.04) 0px 10px 10px -5px;
+}
+
+:root {
+  /* =========================
+     COLOURS (HSL + computed)
+     ========================= */
+  --col-white-hsl: 0 0% 100%; /* #FFFFFF – pure white */
+  --col-white: hsl(var(--col-white-hsl));
+  --col-black-hsl: 0 0% 0%; /* #000000 – pure black */
+  --col-neutral-900-hsl: 90 9% 16%; /* #2B2624 – charcoal */
+  --col-neutral-900: hsl(var(--col-neutral-900-hsl));
+  --col-black: hsl(var(--col-black-hsl));
+  --col-secondary-100-hsl: 30 27% 95%; /* #F5F2EE – off-white */
+  --col-secondary-100: hsl(var(--col-secondary-100-hsl));
+  --col-secondary-400-hsl: 32 14% 73%; /* #C2B8AC – soft taupe */
+  --col-secondary-400: hsl(var(--col-secondary-400-hsl));
+  --col-secondary-900-hsl: 24 7% 40%; /* #6E655F – warm stone */
+  --col-secondary-900: hsl(var(--col-secondary-900-hsl));
+  --col-accent-400-hsl: 39 62% 54%; /* #D79C3F – golden ochre */
+  --col-accent-400: hsl(var(--col-accent-400-hsl));
+  /* Accent variants */
+  --col-accent-400-hover-hsl: 39 62% 47%; /* darker by ~7% lightness */
+  --col-accent-400-hover: hsl(var(--col-accent-400-hover-hsl));
+  --col-accent-400-active-hsl: 39 62% 42%; /* darker by ~12% lightness */
+  --col-accent-400-active: hsl(var(--col-accent-400-active-hsl));
+  /* =========================
+     TYPOGRAPHY (families/weights)
+     ========================= */
+  --ff-heading:
+    "Barlow", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --ff-body:
+    "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif;
+  --ff-accent:
+    "Merriweather", ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
+  --fw-heading: 600; /* Semibold */
+  --fw-body: 400; /* Regular */
+  --fw-meta: 200; /* Thin */
+  --fw-ui: 600; /* Semibold */
+  --fw-accent: 300; /* Light Italic */
+  --lh-tight: 1.1;
+  --lh-snug: 1.25;
+  --lh-normal: 1.5;
+  /* =========================
+     TYPOGRAPHY (responsive sizes)
+     ========================= */
+  --fs-display: clamp(2.25rem, 1.2rem + 2.5vw, 3rem); /* 36→48px */
+  --fs-h2: clamp(1.75rem, 1.1rem + 1.5vw, 2.25rem); /* 28→36px */
+  --fs-h3: clamp(1.25rem, 1.05rem + 0.8vw, 1.5rem); /* 20→24px */
+  --fs-subtle: clamp(1.125rem, 1.02rem + 0.5vw, 1.375rem); /* 18→22px */
+  --fs-body: clamp(1rem, 0.95rem + 0.4vw, 1.125rem); /* 16→18px */
+  --fs-meta: clamp(1rem, 0.98rem + 0.2vw, 1.0625rem); /* 16→17px */
+  --fs-ui: clamp(0.875rem, 0.82rem + 0.3vw, 0.9375rem); /* 14→15px */
+  /* =========================
+     RADIUS
+     ========================= */
+  --radius-base: 8px; /* Spec default for interactive & container elements */
+  /* =========================
+     SHADOWS
+     ========================= */
+  /* Close & tight – "active" */
+  --shadow-active: 0 1px 2px rgba(0, 0, 0, 0.18), 0 1px 3px rgba(0, 0, 0, 0.12);
+  /* Mid & airy – "non-interactive" */
+  --shadow-noninteractive:
+    0 4px 6px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.06);
+  /* Out & clear – "interactive" */
+  --shadow-interactive:
+    0 8px 12px rgba(0, 0, 0, 0.1), 0 4px 6px rgba(0, 0, 0, 0.08);
+  /* === Utilities === */
+  --transition: 250ms ease-out;
+  --h-top: 72px;
+  --h-top-desktop: 130px;
 }
 
 *,
@@ -126,8 +235,10 @@ p {
 }
 
 abbr[title] {
+  -webkit-text-decoration: underline dotted;
   text-decoration: underline dotted;
   cursor: help;
+  -webkit-text-decoration-skip-ink: none;
   text-decoration-skip-ink: none;
 }
 
@@ -465,7 +576,7 @@ progress {
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #27383A;
+  --bs-primary: #27383a;
   --bs-secondary: #222222;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -504,7 +615,7 @@ progress {
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
-  --bs-link-color: #27383A;
+  --bs-link-color: #27383a;
   --bs-link-hover-color: rgb(31.2, 44.8, 46.4);
   --bs-code-color: #d63384;
   --bs-highlight-bg: rgb(255, 242.6, 205.4);
@@ -905,7 +1016,7 @@ progress {
   --bs-gray-700: #495057;
   --bs-gray-800: #343a40;
   --bs-gray-900: #212529;
-  --bs-primary: #27383A;
+  --bs-primary: #27383a;
   --bs-secondary: #222222;
   --bs-success: #198754;
   --bs-info: #0dcaf0;
@@ -944,7 +1055,7 @@ progress {
   --bs-border-radius-xl: 1rem;
   --bs-border-radius-2xl: 2rem;
   --bs-border-radius-pill: 50rem;
-  --bs-link-color: #27383A;
+  --bs-link-color: #27383a;
   --bs-link-hover-color: rgb(31.2, 44.8, 46.4);
   --bs-code-color: #d63384;
   --bs-highlight-bg: rgb(255, 242.6, 205.4);
@@ -997,7 +1108,7 @@ progress {
 }
 
 .link-primary {
-  color: #27383A !important;
+  color: #27383a !important;
 }
 .link-primary:hover, .link-primary:focus {
   color: rgb(31.2, 44.8, 46.4) !important;
@@ -2511,14 +2622,20 @@ progress {
 }
 
 .user-select-all {
+  -webkit-user-select: all !important;
+  -moz-user-select: all !important;
   user-select: all !important;
 }
 
 .user-select-auto {
+  -webkit-user-select: auto !important;
+  -moz-user-select: auto !important;
   user-select: auto !important;
 }
 
 .user-select-none {
+  -webkit-user-select: none !important;
+  -moz-user-select: none !important;
   user-select: none !important;
 }
 
@@ -5393,16 +5510,16 @@ progress {
 
 .has-primary-color,
 .has-primary-color:visited {
-  color: #27383A;
+  color: #27383a;
 }
 
 .has-primary-background-color {
-  background-color: #27383A;
-  border-color: #27383A;
+  background-color: #27383a;
+  border-color: #27383a;
 }
 
 .wp-block-button:hover .wp-block-button__link.has-white-background-color.has-primary-color {
-  color: #27383A;
+  color: #27383a;
 }
 
 .has-secondary-color,

@@ -1,5 +1,5 @@
 {
-    "name": "understrap/cb-statman2025",
+    "name": "understrap/lc-harrier2025",
     "description": "Basic Child Starter Theme for Understrap",
     "type": "wordpress-theme",
     "license": "GPL-3.0",
@@ -9,11 +9,11 @@
         "theme",
         "bootstrap"
     ],
-    "homepage": "https://github.com/understrap/cb-statman2025",
+    "homepage": "https://github.com/understrap/lc-harrier2025",
     "authors": [
         {
             "name": "Contributors",
-            "homepage": "https://github.com/understrap/cb-statman2025/contributors.md"
+            "homepage": "https://github.com/understrap/lc-harrier2025/contributors.md"
         }
     ],
     "require": {

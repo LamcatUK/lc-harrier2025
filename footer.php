@@ -1,31 +1,30 @@
 <?php
 /**
- * Footer template for the CB TXP theme.
+ * Footer template for the Harrier Gates 2025 theme.
  *
  * This file contains the footer section of the theme, including navigation menus,
  * office addresses, and colophon information.
  *
- * @package cb-statman2025
+ * @package lc-harrier2025
  */
 
 defined( 'ABSPATH' ) || exit;
-
-if ( ! is_page( 'contact' ) ) {
-	// Include the contact CTA block if not on the contact page.
-	get_template_part( 'page-templates/blocks/cb-contact-cta' );
-}
 ?>
 <div id="footer-top"></div>
-<div class="pre-footer">
-	<div class="container text-center py-5">
-		<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/nick-statman-sig.svg' ); ?>" width="400" height="85">
-	</div>
-</div>
+
 <footer class="footer py-4">
     <div class="container">
-        <div class="row pb-4 g-3">
-            <div class="col-sm-2">
-				<div class="footer-title">Links</div>
+        <div class="row pb-4 g-4">
+			<div class="col-sm-3 text-center">
+				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/harrier-gates--wo.webp' ); ?>" class="w-100 mb-4 d-block" width="237" height="45">
+				<div class="d-flex justify-content-around">
+					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" class="mb-4" width="118" height="74">
+					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" class="mb-4" width="74" height="74">
+				</div>
+				<div><a href="/request-survey/" class="btn btn--primary">Request a Survey</a></div>
+            </div>
+            <div class="col-sm-3">
+				<div class="footer-title">Services</div>
                 <?=
 				wp_nav_menu(
 					array(
@@ -35,35 +34,38 @@ if ( ! is_page( 'contact' ) ) {
 				);
 				?>
             </div>
-            <div class="col-sm-5">
-				<div class="footer-title">Services</div>
+            <div class="col-sm-3">
+				<div class="footer-title">Explore</div>
                 <?=
 				wp_nav_menu(
 					array(
 						'theme_location' => 'footer_menu2',
-						'menu_class'     => 'footer__menu cols-lg-2',
+						'menu_class'     => 'footer__menu',
 					)
 				);
 				?>
             </div>
-            <div class="col-sm-2 footer__contact">
-                <div class="footer-title">Contact</div>
-				<?= do_shortcode( '[contact_phone]' ); ?><br>
-				<?= do_shortcode( '[contact_email]' ); ?><br>
-            </div>
-			<div class="col-sm-3 text-center">
-				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/nick-statman-sig--wo.svg' ); ?>" class="mb-4" width="250" height="53">
-				<?= do_shortcode( '[social_icons class="d-flex justify-content-center gap-3 fs-500 has-accent-500-color"]' ); ?>
+            <div class="col-sm-3 footer__contact">
+                <div class="footer-title">Get in touch</div>
+				<ul class="fa-ul">
+					<li><span class="fa-li"><i class="far fa-envelope"></i></span> <?= do_shortcode( '[contact_email]' ); ?></li>
+					<li><span class="fa-li"><i class="fas fa-phone"></i></span> <?= do_shortcode( '[contact_phone]' ); ?></li>
+					<li><span class="fa-li"><i class="fas fa-map-marker-alt"></i></span> <?= do_shortcode( '[contact_address]' ); ?></li>
+				</ul>
+				<div class="d-flex flex-wrap align-items-center social-icons gap-3">
+					<span>Connect:</span>
+					<?= do_shortcode( '[social_icons class="d-flex justify-content-center gap-3 fs-h3"]' ); ?>
+				</div>
             </div>
         </div>
 
         <div class="colophon d-flex justify-content-between align-items-center flex-wrap">
             <div>
-                &copy; <?= esc_html( gmdate( 'Y' ) ); ?> Nick Statman.
+                &copy; <?= esc_html( gmdate( 'Y' ) ); ?> Harrier Gates Limited. Registered in England, no. 10910675
             </div>
             <div>
-                <a href="https://www.chillibyte.co.uk/" rel="nofollow noopener" target="_blank" class="cb"
-                title="Digital Marketing by Chillibyte"></a>
+				Terms of use | Privacy & Cookies |
+                Site by <a href="https://www.lamcat.co.uk/" rel="nofollow noopener" target="_blank">Lamcat</a>
             </div>
         </div>
 </footer>

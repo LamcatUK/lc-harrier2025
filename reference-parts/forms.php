@@ -4,7 +4,7 @@
  *
  * Demonstrates standard Bootstrap 5 form elements as styled in the theme.
  *
- * @package cb-statman2025
+ * @package lc-harrier2025
  */
 
 if ( ! defined( 'ABSPATH' ) ) {

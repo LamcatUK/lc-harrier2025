@@ -2,7 +2,7 @@
 /**
  * Template for displaying the blog index page.
  *
- * @package cb-statman2025
+ * @package lc-harrier2025
  */
 
 defined( 'ABSPATH' ) || exit;
@@ -12,24 +12,27 @@ $page_for_posts = get_option( 'page_for_posts' );
 get_header();
 ?>
 <main id="main">
-	<section class="hero">
-		<div class="container h-100">
-			<div class="row h-100 g-5">
-				<div class="col-md-6 my-auto pe-5 hero__content">
-					<h1 class="hero__title" data-aos="fade">News &amp; Insights</h1>
-					<p class="hero__subtitle" data-aos="fade">Insightful updates and straight-talking advice on property, deals, and strategy</p>
-				</div>
-				<div class="col-md-6 px-0 hero__image-container">
-					<?=
-					get_the_post_thumbnail(
-						$page_for_posts,
-						'full',
-						array(
-							'class'    => 'hero__image',
-							'data-aos' => 'zoom-out',
-						)
-					);
-					?>
+	<section class="page-hero">
+		<?=
+		get_the_post_thumbnail(
+			$page_for_posts,
+			'full',
+			array(
+				'class'    => 'page-hero__image',
+			)
+		);
+		?>
+		<div class="page-hero__overlay"></div>
+		<div class="container">
+			<div class="row h-100 align-items-center">
+				<div class="col-md-8 col-lg-6 col-xl-4 page-hero__content">
+					<h1>News &amp; Insights</h1>
+					<p class="subtitle">Expert advice, industry updates, and company news.</p>
+					<a href="/request-survey/" class="btn btn--primary mb-4">Request a Survey</a>
+					<div class="d-flex gap-4 justify-content-start">
+						<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" class="mb-4" width="118" height="74">
+						<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" class="mb-4" width="74" height="74">
+					</div>
 				</div>
 			</div>
 		</div>
@@ -37,6 +40,7 @@ get_header();
     <section class="latest_posts mt-5">
         <div class="container pb-5">
             <?php
+			/*
             // Get all categories for filter buttons.
             $all_categories = get_categories(
 				array(
@@ -64,6 +68,7 @@ get_header();
                 </div>
                 <?php
             }
+				*/
             ?>
             <div class="row g-4 w-100">
             <?php
@@ -79,6 +84,7 @@ get_header();
             $q = new WP_Query( $args );
 
             if ( $q->have_posts() ) {
+				$d = 0;
 				while ( $q->have_posts() ) {
 					$q->the_post();
 					// get categories.
@@ -96,27 +102,18 @@ get_header();
 					}
 					?>
 					<div class="col-md-6 col-lg-4" data-aos="fade" data-aos-delay="<?= esc_attr( $d ); ?>" data-category="<?= esc_attr( $categories ); ?>">
-						<a class="latest_posts__item" href="<?= esc_url( get_permalink() ); ?>">
-							<div class="latest_posts__image">
-								<?php
-								if ( $first_category ) {
-									?>
-									<span class="badge"><?= esc_html( $first_category->name ); ?></span>
-									<?php
-								} else {
-									?>
-									<span class="badge">News</span>
-									<?php
-								}
-								?>
-								<?= get_the_post_thumbnail( get_the_ID(), 'medium', array( 'class' => 'img-fluid' ) ); ?>
+						<a href="<?= esc_url( get_permalink() ) ?>" class="latest-insights__item">
+							<div class="latest-insights__img-wrapper">
+								<?= get_the_post_thumbnail( get_the_ID(), 'large', array( 'class' => 'img-fluid mb-3' ) ); ?>
 							</div>
-							<div class="post_meta ps-3">
-								<span><i class="fa-regular fa-calendar"></i> <?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
-								<span><i class="fa-regular fa-clock"></i> <?= esc_html( estimate_reading_time_in_minutes( get_the_content() ) ); ?> minute read</span>
-
+							<div class="latest-insights__inner">
+								<h3><?= esc_html( get_the_title() ) ?></h3>
+								<div class="latest-insights__meta">
+									<span><i class="fa-regular fa-calendar"></i> <?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
+									<span><i class="fa-regular fa-clock"></i> <?= wp_kses_post( estimate_reading_time_in_minutes( get_the_content() ) ); ?> minute read</span>
+								</div>
+								<div class="text-secondary-900"><?= esc_html( get_the_excerpt() ); ?></div>
 							</div>
-							<h3 class="latest_posts__title"><?= esc_html( get_the_title() ); ?></h3>
 						</a>
 					</div>
 					<?php

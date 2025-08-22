@@ -1,136 +1,200 @@
-/* urbanist-600 - latin */
+/* barlow-600 - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Urbanist';
+  font-family: "Barlow";
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/urbanist-v17-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("../fonts/barlow-v12-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-/* nunito-sans-200 - latin */
+
+/* merriweather-300italic - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Nunito Sans';
+  font-family: "Merriweather";
+  font-style: italic;
+  font-weight: 300;
+  src: url("../fonts/merriweather-v32-latin-300italic.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-200 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter";
   font-style: normal;
   font-weight: 200;
-  src: url('../fonts/nunito-sans-v18-latin-200.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("../fonts/inter-v19-latin-200.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
 
-/* nunito-sans-600 - latin */
+/* inter-regular - latin */
 @font-face {
   font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
-  font-family: 'Nunito Sans';
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/inter-v19-latin-regular.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+}
+
+/* inter-600 - latin */
+@font-face {
+  font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+  font-family: "Inter";
   font-style: normal;
   font-weight: 600;
-  src: url('../fonts/nunito-sans-v18-latin-600.woff2') format('woff2'); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
+  src: url("../fonts/inter-v19-latin-600.woff2") format("woff2"); /* Chrome 36+, Opera 23+, Firefox 39+, Safari 12+, iOS 10+ */
 }
-
 
 :root {
-    font-variant-ligatures: none;
+  font-variant-ligatures: none;
 }
 
+/* =========================
+   TYPOGRAPHY
+   ========================= */
+
+/* Base */
 html {
-    font-size: 16px;
-}
-
+  font-size: 100%;
+} /* 16px */
 body {
-    font-family: var(--ff-body);
-    font-weight: var(--fw-400);
-    font-size: var(--text-base);
-    line-height: 1.556;
-    font-style: normal;
-    color: var(--col-dark);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+  font-family: var(--ff-body);
+  font-weight: var(--fw-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-normal);
+  color: var(--col-neutral-900);
+  background: var(--col-secondary-100);
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-h1,
-.h1,
-h2,
-.h2,
-h3,
-.h3 {
-    font-family: var(--ff-heading);
-    font-weight: var(--fw-900);
-    line-height: 1.1;
-    text-wrap: balance;
-    margin-bottom: 0.5em;
-}
-
+/* Headings */
 h1,
 .h1 {
-    font-size: var(--text-2xl);
-    text-transform: uppercase;
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-heading);
+  font-size: var(--fs-display);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.01em;
+  text-wrap: balance;
 }
+
 h2,
 .h2 {
-    font-size: var(--text-xl);
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-heading);
+  font-size: var(--fs-h2);
+  line-height: var(--lh-tight);
+  letter-spacing: -0.005em;
+  text-wrap: balance;
 }
+
 h3,
 .h3 {
-    font-size: var(--text-lg);
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-heading);
+  font-size: var(--fs-h3);
+  line-height: var(--lh-snug);
+  text-wrap: balance;
 }
+
 h4,
-.h4,
-h5,
-.h5 {
-    font-size: var(--text-base);
-    font-size: var(--fs-550);
+.h4 {
+  font-family: var(--ff-heading);
+  font-weight: var(--fw-heading);
+  font-size: var(--fs-subtle);
+  line-height: var(--lh-snug);
+  text-wrap: balance;
 }
 
-.fw-400 {
-    font-weight: var(--fw-400);
-}
-strong,
-.fw-bold,
-.fw-500 {
-    font-weight: var(--fw-500);
-}
-.fs-500,
-.has-medium-font-size {
-    font-size: var(--text-lg);
-}
-.fs-300,
-.has-small-font-size {
-    font-size: var(--text-sm);
+/* Subtle lead-ins / quotes */
+.subtle {
+  font-family: var(--ff-accent);
+  font-weight: var(--fw-accent);
+  font-style: italic;
+  font-size: var(--fs-subtle);
+  line-height: var(--lh-snug);
+  text-wrap: balance;
 }
 
-.text-balance {
-    text-wrap: balance;
+/* Meta / supporting text */
+.meta {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-meta);
+  font-size: var(--fs-meta);
+  line-height: var(--lh-normal);
+  color: var(--col-secondary-900);
 }
 
-.w-constrained--sm {
-    max-width: 65ch;
-}
-.w-constrained--lg {
-    max-width: 92ch;
+/* Small UI labels (buttons, badges) */
+.ui {
+  font-family: var(--ff-body);
+  font-weight: var(--fw-ui);
+  font-size: var(--fs-ui);
+  line-height: var(--lh-normal);
+  letter-spacing: 0.02em;
 }
 
-// p:not([class]) {
-//     max-width: 70ch;
+/* Links */
+a {
+  color: var(--col-accent-400);
+  text-decoration: none;
+}
+a:hover {
+  color: var(--col-accent-400-hover);
+  text-decoration: underline;
+}
+a:focus-visible {
+  outline: 2px solid var(--col-accent-400);
+  outline-offset: 2px;
+}
+
+/* Media rhythm */
+p,
+ul,
+ol,
+blockquote,
+figure {
+  margin-block: 0.75em;
+}
+
+.w-constrained-md {
+  max-width: 72ch;
+  text-wrap: balance;
+}
+
+.fs-body {
+  font-size: var(--fs-body);
+}
+.fs-h3 {
+  font-size: var(--fs-h3);
+}
+.fs-sm,
+.fs-ui {
+  font-size: var(--fs-ui);
+}
+.fs-subtle {
+  font-size: var(--fs-subtle);
+}
+
+.fw-thin {
+  font-weight: var(--fw-meta);
+}
+.fw-regular {
+  font-weight: var(--fw-body);
+}
+.fw-heading {
+  font-weight: var(--fw-heading);
+}
+
+// h1,
+// .h1 {
+//   margin-block: 0.6em 0.4em;
 // }
-
-.ff-body {
-    font-family: var(--ff-body);
-}
-
-.lead-in {
-    font-size: var(--fs-500);
-    font-weight: var(--fw-500);
-    line-height: 1.4;
-}
-
-.fancy {
-    position: relative;
-    padding-left: 4.5rem;
-    &::before {
-        content: '';
-        position: absolute;
-        left: 0;
-        bottom: 0.25em;
-        width: 3.75rem;
-        height: 1.25rem;
-        background-color: var(--col-accent-500);
-        display: block;
-    }
-}
+// h2,
+// .h2 {
+//   margin-block: 1.2em 0.5em;
+// }
+// h3,
+// .h3 {
+//   margin-block: 1.2em 0.4em;
+// }
