@@ -7,8 +7,9 @@
 
 defined( 'ABSPATH' ) || exit;
 
+$classes = is_front_page() ? 'bg-secondary-100' : '';
 ?>
-<section class="latest-insights bg-secondary-100">
+<section class="latest-insights <?= esc_attr( $classes ); ?> py-5">
    <div class="container py-5">
 	   <div class="d-flex justify-content-between flex-wrap">
 		   <span>
@@ -30,7 +31,7 @@ defined( 'ABSPATH' ) || exit;
 	   );
 
 	   if ( $insights->have_posts() ) {
-		   echo '<div class="swiper latest-insights__swiper">';
+		   echo '<div class="swiper latest-insights__swiper pb-4">';
 		   echo '<div class="swiper-wrapper">';
 		   while ( $insights->have_posts() ) {
 			   $insights->the_post();
