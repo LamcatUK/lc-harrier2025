@@ -25,8 +25,8 @@ defined( 'ABSPATH' ) || exit;
 				}
 				?>
 				<div class="d-flex gap-4 justify-content-start">
-					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" class="mb-4" width="118" height="74">
-					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" class="mb-4" width="74" height="74">
+					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" alt="Gate Safe" class="mb-4" width="118" height="74">
+					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" alt="Safe Contractor" class="mb-4" width="74" height="74">
 				</div>
 			</div>
 		</div>

@@ -15,8 +15,8 @@ defined( 'ABSPATH' ) || exit;
             <p class="subtitle subtle mb-4"><?= wp_kses_post( get_field( 'subtitle' ) ); ?></p>
             <a href="#" class="btn btn--primary mb-4">Request a Survey</a>
 			<div class="d-flex gap-4 justify-content-around">
-				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" class="mb-4" width="118" height="74">
-				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" class="mb-4" width="74" height="74">
+				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" alt="Gate Safe" class="mb-4" width="118" height="74">
+				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" alt="Safe Contractor" class="mb-4" width="74" height="74">
 			</div>
         </div>
 		<div class="hero-image carousel slide carousel-fade" data-bs-ride="carousel" data-bs-interval="3000">

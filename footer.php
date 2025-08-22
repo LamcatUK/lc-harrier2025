@@ -16,10 +16,10 @@ defined( 'ABSPATH' ) || exit;
     <div class="container">
         <div class="row pb-4 g-4">
 			<div class="col-sm-3 text-center">
-				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/harrier-gates--wo.webp' ); ?>" class="w-100 mb-4 d-block" width="237" height="45">
+				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/harrier-gates--wo.webp' ); ?>" alt="Harrier Gates" class="w-100 mb-4 d-block" width="237" height="45">
 				<div class="d-flex justify-content-around">
-					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" class="mb-4" width="118" height="74">
-					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" class="mb-4" width="74" height="74">
+					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" alt="Gate Safe" class="mb-4" width="118" height="74">
+					<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" alt="Safe Contractor" class="mb-4" width="74" height="74">
 				</div>
 				<div><a href="/request-survey/" class="btn btn--primary">Request a Survey</a></div>
             </div>
