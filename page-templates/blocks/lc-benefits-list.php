@@ -16,7 +16,7 @@ defined( 'ABSPATH' ) || exit;
 				<div class="benefits-list__intro mb-4"><?= esc_html( get_field( 'intro_left' ) ); ?></div>
 				<ul class="benefits-list__items fa-ul">
 					<?php
-					$i = 1;
+					$i     = 1;
 					$style = get_field( 'list_type_left' );
 					if ( have_rows( 'list_left' ) ) {
 						while ( have_rows( 'list_left' ) ) {
@@ -29,7 +29,7 @@ defined( 'ABSPATH' ) || exit;
 							?>
 							<li class="benefits-list__item mb-3">
 								<span class="fa-li">
-									<?= $icon; ?>
+									<?= wp_kses_post( $icon ); ?>
 								</span>
 								<h3><?= wp_kses_post( get_sub_field( 'title' ) ); ?></h3>
 								<?= wp_kses_post( get_sub_field( 'content' ) ); ?>
@@ -47,7 +47,7 @@ defined( 'ABSPATH' ) || exit;
 				<ul class="benefits-list__items fa-ul">
 					<?php
 					if ( have_rows( 'list_right' ) ) {
-						$i = 1;
+						$i     = 1;
 						$style = get_field( 'list_type_right' );
 						while ( have_rows( 'list_right' ) ) {
 							the_row();
@@ -59,7 +59,7 @@ defined( 'ABSPATH' ) || exit;
 							?>
 							<li class="benefits-list__item mb-3">
 								<span class="fa-li">
-									<?= $icon; ?>
+									<?= wp_kses_post( $icon ); ?>
 								</span>
 								<h3><?= wp_kses_post( get_sub_field( 'title' ) ); ?></h3>
 								<?= wp_kses_post( get_sub_field( 'content' ) ); ?>

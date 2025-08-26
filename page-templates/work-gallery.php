@@ -30,26 +30,28 @@ get_header();
 	<section class="gallery">
 		<div class="container pb-5">
 			<?php
-			// Fetch all work_type terms for filter dropdown
-			$terms = get_terms(array(
-				'taxonomy' => 'work_type',
-				'hide_empty' => true,
-			));
+			// Fetch all work_type terms for filter dropdown.
+			$terms = get_terms(
+				array(
+					'taxonomy'   => 'work_type',
+					'hide_empty' => true,
+				)
+			);
 			?>
 			<div class="gallery__filter py-5 d-flex flex-wrap gap-2">
 				<button type="button" class="btn btn--filter btn--ghost active" data-filter="">All Work Types</button>
 				<?php
-				foreach ($terms as $term) {
+				foreach ( $terms as $work_term ) {
 					?>
-					<button type="button" class="btn btn--filter btn--ghost" data-filter="<?= esc_attr($term->slug); ?>">
-						<?= esc_html($term->name); ?>
+					<button type="button" class="btn btn--filter btn--ghost" data-filter="<?= esc_attr( $work_term->slug ); ?>">
+						<?= esc_html( $work_term->name ); ?>
 					</button>
 					<?php
 				}
 				?>
 			</div>
 			<?php
-			// Fetch all attachments
+			// Fetch all attachments.
 			$args = array(
 				'post_type'      => 'attachment',
 				'post_status'    => 'inherit',
@@ -60,28 +62,29 @@ get_header();
 					array(
 						'taxonomy' => 'work_type',
 						'field'    => 'slug',
-						'terms'    => wp_list_pluck($terms, 'slug'),
+						'terms'    => wp_list_pluck( $terms, 'slug' ),
 						'operator' => 'IN',
 					),
 				),
 			);
-			$query = new WP_Query($args);
-			if ($query->have_posts()) {
-			?>
+
+			$query = new WP_Query( $args );
+			if ( $query->have_posts() ) {
+				?>
 			<div class="row" id="gallery_items">
 				<?php
-				while ($query->have_posts()) {
+				while ( $query->have_posts() ) {
 					$query->the_post();
-					$work_type_terms = get_the_terms(get_the_ID(), 'work_type');
+					$work_type_terms = get_the_terms( get_the_ID(), 'work_type' );
 					$work_type_slugs = array();
-					if ($work_type_terms && !is_wp_error($work_type_terms)) {
-						foreach ($work_type_terms as $term) {
-							$work_type_slugs[] = esc_attr($term->slug);
+					if ( $work_type_terms && ! is_wp_error( $work_type_terms ) ) {
+						foreach ( $work_type_terms as $work_term ) {
+							$work_type_slugs[] = esc_attr( $work_term->slug );
 						}
 					}
-					$data_attr = !empty($work_type_slugs) ? 'data-work-type="' . implode(' ', $work_type_slugs) . '"' : '';
+					$data_attr = ! empty( $work_type_slugs ) ? 'data-work-type="' . implode( ' ', $work_type_slugs ) . '"' : '';
 					?>
-					<div class="col-md-4 mb-4 gallery-item-wrapper" <?php echo $data_attr; ?> >
+					<div class="col-md-4 mb-4 gallery-item-wrapper" <?= wp_kses_post( $data_attr ); ?> >
 						<a href="<?= esc_url( wp_get_attachment_image_url( get_the_ID(), 'full' ) ); ?>" class="work__link image-16x9 glightbox" data-gallery="work-gallery-all" data-type="image">
 							<?= wp_get_attachment_image( get_the_ID(), 'large', false, array( 'class' => 'work__image' ) ); ?>
 						</a>
@@ -90,14 +93,14 @@ get_header();
 				}
 				?>
 			</div>
-			<?php
+				<?php
 			}
 			wp_reset_postdata();
 			?>
 		</div>
 	</section>
 	<section class="image-cta">
-		<?= wp_get_attachment_image( 277, 'full', false, [ 'class' => 'image-cta__image' ] ); ?>
+		<?= wp_get_attachment_image( 277, 'full', false, array( 'class' => 'image-cta__image' ) ); ?>
 		<div class="image-cta__overlay"></div>
 		<div class="image-cta__content container">
 			<div class="row h-100 align-items-center">
@@ -115,7 +118,7 @@ get_header();
 <?php
 add_action(
 	'wp_footer',
-	function() {
+	function () {
 		?>
 </script>
 <script>

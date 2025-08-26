@@ -29,32 +29,36 @@ add_action( 'wp_enqueue_scripts', 'understrap_remove_scripts', 20 );
  * Enqueue our stylesheet and javascript file
  */
 
-// Enqueue child-theme.min.css late for override, with filemtime versioning.
+/**
+ * Enqueue child-theme.min.css late for override, with filemtime versioning.
+ */
 function lc_enqueue_theme_css() {
 	$rel = '/css/child-theme.min.css';
 	$abs = get_stylesheet_directory() . $rel;
 	wp_enqueue_style(
 		'lc-theme',
 		get_stylesheet_directory_uri() . $rel,
-		[],
+		array(),
 		file_exists( $abs ) ? filemtime( $abs ) : null
 	);
 }
 add_action( 'wp_enqueue_scripts', 'lc_enqueue_theme_css', 20 );
 
-// Enqueue child-theme.min.js with filemtime versioning.
+/**
+ * Enqueue child-theme.min.js with filemtime versioning.
+ */
 function lc_enqueue_theme_js() {
-    $rel = '/js/child-theme.min.js';
-    $abs = get_stylesheet_directory() . $rel;
-    if ( file_exists( $abs ) ) {
-        wp_enqueue_script(
-            'lc-theme-js',
-            get_stylesheet_directory_uri() . $rel,
-            [],
-            filemtime( $abs ),
-            true
-        );
-    }
+	$rel = '/js/child-theme.min.js';
+	$abs = get_stylesheet_directory() . $rel;
+	if ( file_exists( $abs ) ) {
+		wp_enqueue_script(
+			'lc-theme-js',
+			get_stylesheet_directory_uri() . $rel,
+			array(),
+			filemtime( $abs ),
+			true
+		);
+	}
 }
 add_action( 'wp_enqueue_scripts', 'lc_enqueue_theme_js', 20 );
 

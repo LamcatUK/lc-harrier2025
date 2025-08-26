@@ -25,9 +25,9 @@ defined( 'ABSPATH' ) || exit;
 				$active = 'active';
 				foreach ( get_field( 'images' ) as $image ) {
 					echo '<div class="carousel-item ' . esc_attr( $active ) . '">';
-					echo wp_get_attachment_image($image, 'full', false, array('class' => 'hero-img'));
+					echo wp_get_attachment_image( $image, 'full', false, array( 'class' => 'hero-img' ) );
 					echo '</div>';
-					$active = ''; // Set active to empty for subsequent items
+					$active = ''; // Set active to empty for subsequent items.
 				}
 				?>
 			</div>
@@ -67,15 +67,26 @@ defined( 'ABSPATH' ) || exit;
     </div>
 </section>
 <?php
+
+// Enqueue CountUp.js properly.
+if ( ! wp_script_is( 'countup-js', 'enqueued' ) ) {
+    wp_enqueue_script(
+        'countup-js',
+        'https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js',
+        array(),
+        null, // phpcs:ignore
+        true
+    );
+}
+
 add_action(
 	'wp_footer',
 	function () {
 		?>
-<script src="https://cdn.jsdelivr.net/npm/countup.js@2.6.2/dist/countUp.umd.js"></script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    const statSpinnerSection = document.querySelector('.hero-spinner');
-    if (!statSpinnerSection) return;
+	const statSpinnerSection = document.querySelector('.hero-spinner');
+	if (!statSpinnerSection) return;
 
     let hasAnimated = false;
 
@@ -123,5 +134,6 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 </script>
 		<?php
-	}
+	},
+	100
 );

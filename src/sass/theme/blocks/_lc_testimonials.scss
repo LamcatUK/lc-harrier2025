@@ -1,3 +1,13 @@
+.testimonials {
+  .swiper-pagination-bullet {
+    background: var(--col-secondary-100) !important;
+    opacity: 1 !important;
+  }
+  .swiper-pagination-bullet-active {
+    background: var(--col-accent-400) !important;
+  }
+}
+
 .testimonial {
   display: grid;
   grid-template-columns: 50px 1fr;

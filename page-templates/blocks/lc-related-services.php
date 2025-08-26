@@ -8,17 +8,16 @@
 defined( 'ABSPATH' ) || exit;
 
 ?>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css" />
 <section class="related py-5 has-secondary-100-background-color">
 	<div class="container">
 		<h2><?= esc_html( get_field( 'title' ) ); ?></h2>
 		<div class="related__intro w-constrained-md mb-4"><?= esc_html( get_field( 'intro' ) ); ?></div>
 		<?php
-		// get child pages of 'services' excluding the current page
-		$parent = get_page_by_path( 'services' );
-		$parent_id = $parent ? $parent->ID : 0;
+		// get child pages of 'services' excluding the current page.
+		$parent     = get_page_by_path( 'services' );
+		$parent_id  = $parent ? $parent->ID : 0;
 		$current_id = get_the_ID();
-		$args = array(
+		$args       = array(
 			'post_type'      => 'page',
 			'post_status'    => 'publish',
 			'posts_per_page' => -1,
@@ -27,6 +26,7 @@ defined( 'ABSPATH' ) || exit;
 			'orderby'        => 'menu_order',
 			'order'          => 'ASC',
 		);
+
 		$query = new WP_Query( $args );
 		if ( $query->have_posts() ) {
 			echo '<div class="service-cards__swiper swiper mb-4">';
@@ -55,31 +55,43 @@ defined( 'ABSPATH' ) || exit;
 </section>
 <?php
 add_action(
+	'wp_enqueue_scripts',
+	function () {
+		wp_enqueue_style(
+			'swiper',
+			'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css',
+			array(),
+			null, // phpcs:ignore
+		);
+	}
+);
+
+add_action(
 	'wp_footer',
-	function() {
+	function () {
 		?>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
-    var swiper = new Swiper('.service-cards__swiper.swiper', {
-        loop: true,
-        autoplay: {
-            delay: 2500,
-            disableOnInteraction: false,
-        },
-        slidesPerView: 1,
-        spaceBetween: 24,
-        breakpoints: {
-            768: {
-                slidesPerView: 2,
-            },
-            992: {
-                slidesPerView: 3,
-            },
-            1200: {
-                slidesPerView: 4,
-            }
-        },
-    });
+	var swiper = new Swiper('.service-cards__swiper.swiper', {
+		loop: true,
+		autoplay: {
+			delay: 2500,
+			disableOnInteraction: false,
+		},
+		slidesPerView: 1,
+		spaceBetween: 24,
+		breakpoints: {
+			768: {
+				slidesPerView: 2,
+			},
+			992: {
+				slidesPerView: 3,
+			},
+			1200: {
+				slidesPerView: 4,
+			}
+		},
+	});
 });
 </script>
 		<?php

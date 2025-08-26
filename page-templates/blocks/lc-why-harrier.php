@@ -50,7 +50,7 @@ defined( 'ABSPATH' ) || exit;
 			<div class="col-md-6">
 				<h2 class="h3">Proudly recognised for excellence and innovation</h2>
 			</div>
-			<div class="col-md-6 d-flex justify-content-between flex-wrap">
+			<div class="col-md-6 d-flex justify-content-around flex-wrap">
 				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/logos/logo-sme.png' ); ?>" alt="SME Surrey Business Awards" width="150" height="105" class="mb-3">
 				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/logos/logo-surrey.png' ); ?>" alt="Invest in Surrey 40 under 40 Awards" width="150" height="105" class="mb-3">
 				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/logos/logo-corplivewire.png' ); ?>" alt="Corporate Livewire Innovation Awards" width="150" height="105" class="mb-3">

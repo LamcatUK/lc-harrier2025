@@ -21,7 +21,7 @@ defined( 'ABSPATH' ) || exit;
 					while ( have_rows( 'testimonials' ) ) {
 						the_row();
 						$testimonial = get_sub_field( 'quote' );
-						$author = get_sub_field( 'attribution' );
+						$author      = get_sub_field( 'attribution' );
 						?>
 						<div class="swiper-slide">
 							<div class="testimonial mb-4">
@@ -39,7 +39,7 @@ defined( 'ABSPATH' ) || exit;
 				?>
 			</div>
 			<div class="col-md-4">
-				<?= do_shortcode( '[trustindex no-registration=google]'); ?>
+				<?= do_shortcode( '[trustindex no-registration=google]' ); ?>
 				<div class="text-center">
 					<a href="https://search.google.com/local/writereview?placeid=ChIJWauIEo7EdUgRwC-kZDHH-C8" target="_blank" class="btn btn--primary">Write a review</a>
 				</div>
@@ -50,7 +50,7 @@ defined( 'ABSPATH' ) || exit;
 <?php
 add_action(
 	'wp_footer',
-	function() {
+	function () {
 		?>
 <script>
 document.addEventListener('DOMContentLoaded', function() {

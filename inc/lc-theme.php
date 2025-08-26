@@ -26,27 +26,35 @@ remove_action( 'wp_body_open', 'wp_global_styles_render_svg_filters' );
  * Editor styles: opt-in so WP loads editor.css in the block editor.
  * With theme.json present, this just adds your custom CSS on top (variables, helpers).
  */
-add_action( 'after_setup_theme', function () {
-    add_theme_support( 'editor-styles' );
-    add_editor_style( 'css/editor.css' );
-}, 5 );
+add_action(
+    'after_setup_theme',
+    function () {
+        add_theme_support( 'editor-styles' );
+        add_editor_style( 'css/editor.css' );
+    },
+    5
+);
 
 /**
  * Neutralise legacy palette/font-size support (if parent/Understrap adds them).
  * theme.json is authoritative, but some themes still register supports in PHP.
  * Remove them AFTER the parent has added them (high priority).
  */
-add_action( 'after_setup_theme', function () {
-    remove_theme_support( 'editor-color-palette' );
-    remove_theme_support( 'editor-gradient-presets' );
-    remove_theme_support( 'editor-font-sizes' );
-}, 99 );
+add_action(
+    'after_setup_theme',
+    function () {
+        remove_theme_support( 'editor-color-palette' );
+        remove_theme_support( 'editor-gradient-presets' );
+        remove_theme_support( 'editor-font-sizes' );
+    },
+    99
+);
 
 /**
  * (Optional) Ensure custom colours *aren’t* forcibly disabled by parent.
  * If Understrap disables custom colours, this re-enables them so theme.json works fully.
  */
-add_filter( 'should_load_separate_core_block_assets', '__return_true' ); // performance nicety
+add_filter( 'should_load_separate_core_block_assets', '__return_true' ); // performance nicety.
 
 /**
  * Removes specific page templates from the available templates list.
@@ -185,10 +193,10 @@ function lc_theme_enqueue() {
     // wp_enqueue_style('lightbox-stylesheet', get_stylesheet_directory_uri() . '/css/lightbox.min.css', array(), $the_theme->get('Version'));
     // wp_enqueue_script('lightbox-scripts', get_stylesheet_directory_uri() . '/js/lightbox.min.js', array(), $the_theme->get('Version'), true);
     // phpcs:enable
-    wp_enqueue_style( 'aos-style', 'https://unpkg.com/aos@2.3.1/dist/aos.css', array() );
-    wp_enqueue_script( 'aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), null, true );
-    wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), null );
-    wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), null, true );
+    wp_enqueue_style( 'aos-style', 'https://unpkg.com/aos@2.3.1/dist/aos.css', array() ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+    wp_enqueue_script( 'aos', 'https://unpkg.com/aos@2.3.1/dist/aos.js', array(), null, true ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+    wp_enqueue_style( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.css', array(), null ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
+    wp_enqueue_script( 'swiper', 'https://cdn.jsdelivr.net/npm/swiper@10/swiper-bundle.min.js', array(), null, true ); // phpcs:ignore WordPress.WP.EnqueuedResourceParameters.MissingVersion
 
     wp_enqueue_style( 'glightbox-style', 'https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.1/css/glightbox.min.css', array(), $the_theme->get( 'Version' ) );
     wp_enqueue_script( 'glightbox', 'https://cdnjs.cloudflare.com/ajax/libs/glightbox/3.3.1/js/glightbox.min.js', array(), $the_theme->get( 'Version' ), true );
@@ -210,45 +218,60 @@ add_action( 'wp_enqueue_scripts', 'lc_theme_enqueue' );
 // add_filter('wp_nav_menu_items', 'add_custom_menu_item', 10, 2);
 // phpcs:enable
 
+/**
+ * Retrieves a child area page by its slug under the 'areas' parent page.
+ *
+ * @param string $slug The slug of the area page.
+ * @return WP_Post|null The area page post object if found, or null if not found.
+ */
 function lc_get_area_page_by_slug( string $slug ) {
     $parent = get_page_by_path( 'areas' );
     if ( ! $parent ) {
         return null;
     }
     // get_page_by_path with parent context (WordPress doesn’t do nested path matching here),
-    // so we fetch by path "areas/{$slug}" in one go:
+    // so we fetch by path "areas/{$slug}" in one go:.
     $page = get_page_by_path( 'areas/' . $slug );
     return $page instanceof WP_Post ? $page : null;
 }
 
+/**
+ * Renders the list of areas covered, grouped by county, using the 'area' taxonomy.
+ *
+ * Outputs HTML for each county and its areas, linking to area pages if available.
+ */
 function lc_render_areas_we_cover_from_taxonomy() {
-    $counties = get_terms( array(
-        'taxonomy'   => 'area',
-        'parent'     => 0,
-        'hide_empty' => false,
-        'orderby'    => 'name',
-        'order'      => 'ASC',
-    ) );
+    $counties = get_terms(
+        array(
+            'taxonomy'   => 'area',
+            'parent'     => 0,
+            'hide_empty' => false,
+            'orderby'    => 'name',
+            'order'      => 'ASC',
+        )
+    );
 
     if ( is_wp_error( $counties ) || empty( $counties ) ) {
         return;
     }
 
     foreach ( $counties as $county ) {
-        $areas = get_terms( array(
-            'taxonomy'   => 'area',
-            'parent'     => (int) $county->term_id,
-            'hide_empty' => false,
-            'orderby'    => 'name',
-            'order'      => 'ASC',
-        ) );
+        $areas = get_terms(
+            array(
+                'taxonomy'   => 'area',
+                'parent'     => (int) $county->term_id,
+                'hide_empty' => false,
+                'orderby'    => 'name',
+                'order'      => 'ASC',
+            )
+        );
 
         if ( is_wp_error( $areas ) || empty( $areas ) ) {
             continue;
         }
 
         echo '<div class="areas__group">';
-        // Try to find a page for the county (area title)
+        // Try to find a page for the county (area title).
         $county_slug = $county->slug;
         $county_page = lc_get_area_page_by_slug( $county_slug );
         echo '<h3 class="h3" style="font-size: var(--fs-h3); line-height: var(--lh-snug); color: var(--col-neutral-900);">';
@@ -261,13 +284,13 @@ function lc_render_areas_we_cover_from_taxonomy() {
         echo '<ul class="areas__list">';
 
         foreach ( $areas as $term ) {
-            $slug = $term->slug; // e.g. "guildford"
+            $slug = $term->slug; // e.g. "guildford".
             $page = lc_get_area_page_by_slug( $slug );
 
             echo '<li class="areas__item">';
             if ( $page ) {
                 echo '<a class="areas__link" href="' . esc_url( get_permalink( $page->ID ) ) . '">'
-                   . esc_html( $term->name ) . '</a>';
+                    . esc_html( $term->name ) . '</a>';
             } else {
                 echo '<span class="areas__text">' . esc_html( $term->name ) . '</span>';
             }
@@ -277,5 +300,4 @@ function lc_render_areas_we_cover_from_taxonomy() {
         echo '</ul>';
         echo '</div>';
     }
-
 }

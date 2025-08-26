@@ -29,11 +29,11 @@ if ( $fg ) {
 				</div>
 				<?php
 				if ( get_field( 'link' ) ) {
-					$link = get_field( 'link' );
+					$button_link = get_field( 'link' );
 					?>
 					<div class="text-end">
-						<a class="btn btn--primary mt-3 me-0" href="<?= esc_url( $link['url'] ); ?>" target="<?= esc_attr( $link['target'] ); ?>">
-							<?= esc_html( $link['title'] ); ?>
+						<a class="btn btn--primary mt-3 me-0" href="<?= esc_url( $button_link['url'] ); ?>" target="<?= esc_attr( $button_link['target'] ); ?>">
+							<?= esc_html( $button_link['title'] ); ?>
 						</a>
 					</div>
 					<?php
@@ -41,10 +41,35 @@ if ( $fg ) {
 				?>
 			</div>
 			<div class="col-lg-8">
-				<div class="text-video__vimeo ratio ratio-16x9">
-					<?= wp_oembed_get( 'https://player.vimeo.com/video/' . get_field( 'vimeo_id' ) ); ?>
+				<div class="text-video__wrapper">
+					<div class="text-video__poster" alt="">
+						<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/harrier-gates--wo.webp' ); ?>">
+					</div>
+					<div class="text-video__vimeo ratio ratio-16x9">
+						<?= wp_oembed_get( 'https://player.vimeo.com/video/' . get_field( 'vimeo_id' ) ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
 </section>
+<?php
+add_action(
+	'wp_footer',
+	function () {
+		?>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+	var wrapper = document.querySelector('.text-video__wrapper');
+	var poster = wrapper.querySelector('.text-video__poster');
+	var iframe = wrapper.querySelector('iframe');
+	if (iframe) {
+		iframe.addEventListener('load', function() {
+		poster.style.display = 'none';
+		});
+	}
+});
+</script>
+		<?php
+	}
+);
