@@ -207,15 +207,18 @@ add_action( 'wp_enqueue_scripts', 'lc_theme_enqueue' );
 
 
 // phpcs:disable
-// function add_custom_menu_item($items, $args)
-// {
-//     if ($args->theme_location == 'primary_nav') {
-//         $new_item = '<li class="menu-item menu-item-type-post_tyep menu-item-object-page nav-item"><a href="' . esc_url(home_url('/search/')) . '" class="nav-link" title="Search"><span class="icon-search"></span></a></li>';
-//         $items .= $new_item;
-//     }
-//     return $items;
-// }
-// add_filter('wp_nav_menu_items', 'add_custom_menu_item', 10, 2);
+function add_custom_menu_item($items, $args)
+{
+    if ($args->theme_location == 'primary_nav') {
+
+        $new_item  = '<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" class="d-lg-none menu-item menu-item-type-post_type menu-item-object-page nav-item fs-subtle pt-2 pb-4"><i class="fa-solid fa-envelope text-accent-400"></i> ' . do_shortcode( '[contact_email]' ) . '</li>';
+        $new_item .= '<li itemscope="itemscope" itemtype="https://www.schema.org/SiteNavigationElement" class="d-lg-none menu-item menu-item-type-post_type menu-item-object-page nav-item fs-subtle"><i class="fa-solid fa-phone text-accent-400"></i> ' . do_shortcode( '[contact_phone]' ) . '</li>';
+
+        $items .= $new_item;
+    }
+    return $items;
+}
+add_filter('wp_nav_menu_items', 'add_custom_menu_item', 10, 2);
 // phpcs:enable
 
 /**

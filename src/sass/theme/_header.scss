@@ -64,7 +64,7 @@ header {
     font-weight: var(--fw-ui);
   }
 
-  @media (max-width: 995px) {
+  @media (max-width: 991px) {
     .navbar-collapse {
       background: var(--col-neutral-900);
       min-height: 100svh;
@@ -81,6 +81,10 @@ header {
     }
     .dropdown-item {
       font-size: var(--fs-body);
+    }
+
+    .fs-subtle a {
+      font-size: var(--fs-subtle);
     }
   }
 }

@@ -22043,7 +22043,7 @@ header .dropdown.current-menu-item > .nav-link {
   color: var(--col-accent-400);
   font-weight: var(--fw-ui);
 }
-@media (max-width: 995px) {
+@media (max-width: 991px) {
   header .navbar-collapse {
     background: var(--col-neutral-900);
     min-height: 100svh;
@@ -22060,6 +22060,9 @@ header .dropdown.current-menu-item > .nav-link {
   }
   header .dropdown-item {
     font-size: var(--fs-body);
+  }
+  header .fs-subtle a {
+    font-size: var(--fs-subtle);
   }
 }
 

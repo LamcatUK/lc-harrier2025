@@ -111,7 +111,7 @@ if ( session_status() === PHP_SESSION_NONE ) {
 	}
 	?>
 <header id="wrapper-navbar" class="fixed-top p-0">
-	<nav class="navbar navbar-expand-md">
+	<nav class="navbar navbar-expand-lg">
 		<div class="container gap-4">
             <div class="d-flex justify-content-between w-100 w-lg-auto align-items-center py-3 py-lg-0">
                 <div class="logo-container"><a href="/" class="logo navbar-brand" aria-label="Harrier Gates Homepage"></a></div>
