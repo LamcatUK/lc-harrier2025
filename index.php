@@ -14,9 +14,10 @@ get_header();
 <main id="main">
 	<section class="page-hero">
 		<?=
-		get_the_post_thumbnail(
-			$page_for_posts,
+		wp_get_attachment_image(
+			get_post_thumbnail_id( $page_for_posts ),
 			'full',
+			false,
 			array(
 				'class' => 'page-hero__image',
 			)
