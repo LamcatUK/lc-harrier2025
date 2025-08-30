@@ -18,7 +18,7 @@ get_header();
 			$page_for_posts,
 			'full',
 			array(
-				'class'    => 'page-hero__image',
+				'class' => 'page-hero__image',
 			)
 		);
 		?>
