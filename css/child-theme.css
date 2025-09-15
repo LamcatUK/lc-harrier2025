@@ -22732,6 +22732,11 @@ body {
   color: var(--col-neutral-900);
   text-decoration: none;
 }
+@media (max-width: 991px) {
+  .sos {
+    margin-block-start: 99px;
+  }
+}
 
 @media (min-width: 992px) {
   .cols-lg-2 {
