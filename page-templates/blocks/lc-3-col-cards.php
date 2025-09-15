@@ -9,6 +9,7 @@ defined( 'ABSPATH' ) || exit;
 
 $bg      = get_field( 'bg_colour' );
 $fg      = get_field( 'fg_colour' );
+$cols    = get_field( 'columns' ) ? get_field( 'columns' ) : 'three';
 $classes = array();
 $style   = '';
 
@@ -29,7 +30,7 @@ if ( $fg ) {
 				while ( have_rows( 'cards' ) ) {
 					the_row();
 					?>
-					<div class="col-md-4">
+					<div class="<?= esc_attr( 'two' === $cols ? 'col-12 col-md-6' : 'col-12 col-md-4' ); ?>">
 						<div class="col-card">
 							<h3 class="fs-body"><?= wp_kses_post( get_sub_field( 'title' ) ); ?></h3>
 							<div class="fs-sm fw-thin"><?= wp_kses_post( get_sub_field( 'content' ) ); ?></div>
