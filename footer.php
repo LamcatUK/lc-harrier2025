@@ -64,7 +64,7 @@ defined( 'ABSPATH' ) || exit;
                 &copy; <?= esc_html( gmdate( 'Y' ) ); ?> Harrier Gates Limited. Registered in England, no. 10910675
             </div>
             <div>
-				Terms of use | Privacy & Cookies |
+				<a href="/terms-of-use/">Terms of use</a> | <a href="/privacy-policy/">Privacy</a> & <a href="/cookie-policy/">Cookies</a> |
                 Site by <a href="https://www.lamcat.co.uk/" rel="nofollow noopener" target="_blank">Lamcat</a>
             </div>
         </div>
