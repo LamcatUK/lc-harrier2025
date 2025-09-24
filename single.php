@@ -9,11 +9,18 @@ defined( 'ABSPATH' ) || exit;
 get_header();
 ?>
 <main id="main" class="blog">
-	<div class="container">
+	<div class="container pt-4 pb-5">
+		<section class="breadcrumbs fs-ui mb-4">
+        <?php
+        if ( function_exists( 'yoast_breadcrumb' ) ) {
+            yoast_breadcrumb( '<div id="breadcrumbs" class="my-2">', '</div>' );
+        }
+        ?>
+	    </section>
 		<div class="row">
 			<div class="col-md-9">
 				<div class="post_hero">
-					<?= get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'blog_hero__image' ) ); ?>
+					<?= get_the_post_thumbnail( get_the_ID(), 'full', array( 'class' => 'blog_hero__image has-radius' ) ); ?>
 				</div>
 		        <h1 class="h2"><?= esc_html( get_the_title() ); ?></h1>
 				<?php
@@ -32,6 +39,7 @@ get_header();
 				<?php
 				echo wp_kses_post( get_the_content() );
 
+				/*
 				?>
 				<div class="author_box mt-5 has-secondary-300-background-color p-4">
 					<div class="row">
@@ -46,6 +54,9 @@ get_header();
 				</div>
 
 				<?php
+
+				*/
+
 				$prev = get_previous_post();
 				$next = get_next_post();
 
@@ -63,12 +74,12 @@ get_header();
 					<?php
 					if ( $prev ) {
 						?>
-					<a href="<?= esc_url( get_permalink( $prev ) ); ?>" class="button button--outline">← Previous</a>
+					<a href="<?= esc_url( get_permalink( $prev ) ); ?>" class="btn btn--outline">← Previous</a>
 						<?php
 					}
 					if ( $next ) {
 						?>
-					<a href="<?= esc_url( get_permalink( $next ) ); ?>" class="button button--outline">Next →</a>
+					<a href="<?= esc_url( get_permalink( $next ) ); ?>" class="btn btn--outline">Next →</a>
 						<?php
 					}
 					?>
@@ -100,9 +111,10 @@ get_header();
 								$first_category = null;
 							}
 							?>
-							<a class="latest_posts__item mb-4" href="<?= esc_url( get_permalink() ); ?>">
-								<div class="latest_posts__image">
+							<a class="latest_posts__item service-cards__card mb-4" href="<?= esc_url( get_permalink() ); ?>">
+								<div class="latest_posts__image service-cards__image">
 									<?php
+									/*
 									if ( $first_category ) {
 										?>
 										<span class="badge"><?= esc_html( $first_category->name ); ?></span>
@@ -112,14 +124,17 @@ get_header();
 										<span class="badge">News</span>
 										<?php
 									}
+									*/
 									?>
 									<?= get_the_post_thumbnail( get_the_ID(), 'large', array( 'class' => 'img-fluid' ) ); ?>
 								</div>
-								<div class="post_meta ps-4">
-									<span><i class="fa-regular fa-calendar"></i> <?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
-									<span><i class="fa-regular fa-clock"></i> <?= esc_html( estimate_reading_time_in_minutes( get_the_content() ) ); ?> minute read</span>
+								<div class="service-cards__content">
+									<div class="post_meta">
+										<span class="fs-ui"><i class="fa-regular fa-calendar"></i> <?= esc_html( get_the_date( 'jS F Y' ) ); ?></span>
+										<span class="fs-ui"><i class="fa-regular fa-clock"></i> <?= esc_html( estimate_reading_time_in_minutes( get_the_content() ) ); ?> minute read</span>
+									</div>
+									<h3 class="latest_posts__title service-cards__title h4"><?= esc_html( get_the_title() ); ?></h3>
 								</div>
-								<h3 class="latest_posts__title h4"><?= esc_html( get_the_title() ); ?></h3>
 							</a>
 							<?php
 						}

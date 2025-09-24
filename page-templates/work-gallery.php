@@ -120,7 +120,6 @@ add_action(
 	'wp_footer',
 	function () {
 		?>
-</script>
 <script>
 document.addEventListener('DOMContentLoaded', function() {
 	var filterButtons = document.querySelectorAll('.btn--filter');
