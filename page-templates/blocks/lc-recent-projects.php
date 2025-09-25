@@ -17,6 +17,8 @@ $args = array(
     'order'          => 'DESC',
 );
 
+// If a specific term is chosen, filter by it.
+// Otherwise, make sure attachments must have *some* term.
 if ( $work_type ) {
     $args['tax_query'] = array(
         array(
@@ -25,7 +27,15 @@ if ( $work_type ) {
             'terms'    => $work_type,
         ),
     );
+} else {
+    $args['tax_query'] = array(
+        array(
+            'taxonomy' => 'work_type',
+            'operator' => 'EXISTS',
+        ),
+    );
 }
+
 
 $query = new WP_Query( $args );
 
