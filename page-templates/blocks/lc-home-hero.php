@@ -13,7 +13,7 @@ defined( 'ABSPATH' ) || exit;
         <div class="hero-title">
             <h1 class="mt-4 mb-0"><?= wp_kses_post( get_field( 'title' ) ); ?></h1>
             <p class="subtitle subtle mb-4"><?= wp_kses_post( get_field( 'subtitle' ) ); ?></p>
-            <a href="#" class="btn btn--primary mb-4">Request a Survey</a>
+            <a href="/request-survey/" class="btn btn--primary mb-4">Request a Survey</a>
 			<div class="d-flex gap-4 justify-content-around">
 				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/gate-safe-logo.webp' ); ?>" alt="Gate Safe" class="mb-4" width="118" height="74">
 				<img src="<?= esc_url( get_stylesheet_directory_uri() . '/img/safecontractor-sticker.webp' ); ?>" alt="Safe Contractor" class="mb-4" width="74" height="74">
