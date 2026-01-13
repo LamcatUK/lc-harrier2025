@@ -43,13 +43,11 @@ if ( $work_type ) {
 
 $query = new WP_Query( $args );
 
-$block_title = get_field( 'title' ) || 'Recent Projects';
-
 if ( $query->have_posts() ) {
     ?>
 <section class="recent-projects py-5 has-secondary-400-background-color">
     <div class="container">
-        <h2><?= esc_html( $block_title ); ?></h2>
+        <h2><?= esc_html( get_field( 'title' ) ?: 'Recent Projects' ); ?></h2>
         <div class="recent-projects__intro w-constrained-md mb-4"><?= esc_html( get_field( 'intro' ) ); ?></div>
         <?php
         echo '<div class="recent-projects__attachments swiper mb-4">';
