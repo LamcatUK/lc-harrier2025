@@ -148,6 +148,8 @@ get_header();
 				?>
 			</div>
 		</div>
+		<!-- RECENT PROJECTS -->
+ 		<?php get_template_part( 'page-templates/blocks/lc-recent-projects' ); ?>
     </div>
 </main>
 <?php

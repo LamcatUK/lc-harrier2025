@@ -9,6 +9,10 @@ defined( 'ABSPATH' ) || exit;
 
 $work_type = get_field( 'work_type' ); // or get from query var, etc.
 
+if ( ! $work_type && is_singular() ) {
+    $work_type = get_field( 'post_work_type', get_the_ID() );
+}
+
 $args = array(
     'post_type'      => 'attachment',
     'post_status'    => 'inherit',
