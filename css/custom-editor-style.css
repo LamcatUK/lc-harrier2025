@@ -5718,4 +5718,12 @@ body.understrap-no-sidebar .wp-block-cover.alignwide {
   font-weight: 500;
 }
 
+.editor-styles-wrapper {
+  .wp-block {
+      max-width: 1140px;
+      margin-left: auto;
+      margin-right: auto;
+  }
+}
+
 /*# sourceMappingURL=custom-editor-style.css.map */
