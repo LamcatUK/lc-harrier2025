@@ -210,6 +210,8 @@ function cb_gutenberg_admin_styles() {
             /* Main column width */
             .wp-block {
                 max-width: 1040px;
+                margin-left: auto;
+                margin-right: auto;
             }
  
             /* Width of "wide" blocks */
