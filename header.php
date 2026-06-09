@@ -89,7 +89,69 @@ if ( session_status() === PHP_SESSION_NONE ) {
 	if ( get_field( 'bing_site_verification', 'options' ) ) {
 		echo '<meta name="msvalidate.01" content="' . esc_attr( get_field( 'bing_site_verification', 'options' ) ) . '" />';
 	}
+    ?>
+<script type="application/ld+json">
+{
+"@context": "https://schema.org",
+"@type": "Organization",
+"@id": "https://www.harriergates.co.uk/#organization",
+"name": "Harrier Gates",
+"legalName": "Harrier Gates Ltd",
+"url": "https://www.harriergates.co.uk",
+"logo": {
+"@type": "ImageObject",
+"url": "https://www.harriergates.co.uk/wp-content/themes/lc-harrier2025/img/gate-safe-logo.webp",
+"caption": "Harrier Gates"
+},
+"description": "Harrier Gates designs, supplies, installs, and maintains automatic gates, security gates, barriers, bollards, and access control systems for residential, commercial, and industrial clients across Surrey and West Sussex.",
+"foundingDate": "2017",
+"email": "info@harriergates.co.uk",
+"telephone": "+441483379954",
+"address": {
+"@type": "PostalAddress",
+"streetAddress": "The Dairy, Tilehouse Farm Offices, East Shalford Lane",
+"addressLocality": "Shalford",
+"addressRegion": "Surrey",
+"postalCode": "GU4 8AE",
+"addressCountry": "GB"
+},
+"areaServed": [
+{
+"@type": "AdministrativeArea",
+"name": "Surrey"
+},
+{
+"@type": "AdministrativeArea",
+"name": "West Sussex"
+},
+{
+"@type": "AdministrativeArea",
+"name": "Hampshire"
+}
+],
+"hasCredential": [
+{
+"@type": "EducationalOccupationalCredential",
+"name": "Gate Safe Approved Installer"
+},
+{
+"@type": "EducationalOccupationalCredential",
+"name": "Safe Contractor Scheme Member"
+}
+],
+"award": [
+"SME Surrey Business Awards",
+"Invest in Surrey 40 Under 40 Awards",
+"Corporate Livewire Innovation Awards"
+],
+"sameAs": [
+"https://www.facebook.com/Harriergate",
+"https://www.instagram.com/harriergates/"
+]
+}
+</script>
 
+    <?php
 	wp_head();
 	?>
 </head>
